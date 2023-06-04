@@ -1,8 +1,7 @@
-﻿// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. 
-// Напишите программу, которая покажет количество чётных чисел в массиве.
+﻿// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 
-// [345, 897, 568, 234] -> 2
-
+// [3, 7, 23, 12] -> 19
+// [-4, -6, 89, 6] -> 0
 
 int Prompt(string message){
     Console.Write(message);
@@ -28,20 +27,20 @@ void ShowArray(int[] array){
     Console.WriteLine();
 }
 
-int EvenNumbers(int[] array){
-    int result = 0;
+
+int SumElements(int[] array){
+    int sum = 0;
     for (int i = 0; i < array.Length; i++){
-        if (array[i] % 2 == 0){
-            result += 1;
+        if (i % 2 != 0){
+            sum += array[i];
         }
     }
-    return result;
+    return sum;
 }
 
 int l = Prompt("Введите длину массива: ");
-
 int[] array = CreateRandomArray(l, 100, 1000);
 ShowArray(array);
-int resultEvent = EvenNumbers(array);
 
-Console.WriteLine($"Кол-во четных чисел в массиве равно: {resultEvent}");
+int result = SumElements(array);
+Console.WriteLine($"Сумма элементов массива, стоящих на нечётных позициях равна: {result}");
